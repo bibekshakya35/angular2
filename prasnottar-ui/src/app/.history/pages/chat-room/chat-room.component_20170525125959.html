@@ -1,0 +1,104 @@
+<div class="row" *ngIf="!show">
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="loader">
+    Loading...
+  </div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+</div>
+<p-growl [value]="msgs" life="5000"> </p-growl>
+<div class="row clearfix">
+  <div class="col m3 l3 list-view">
+    <div class="card-panel hoverable">
+      <div class="video-container">
+        <iframe width="560" height="500" src="https://www.youtube.com/embed/4R7BxxuGmmE" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="chat col s12 m6 l6">
+    <div class="chat-header clearfix">
+      <img [src]="gcImg" alt="avatar" class="img-room teal" />
+
+      <div class="chat-about">
+        <div class="chat-with">{{gcTitle}}</div>
+      </div>
+      <i class="fa fa-star"></i>
+    </div>
+    <!-- end chat-header -->
+
+    <div class="chat-history">
+      <ul *ngFor="let msg of messages">
+        <li class="clearfix" *ngIf="msg.userid===userid">
+          <div class="message-data align-right">
+            <span class="message-data-time">{{msg.date |date:'shortTime'}}</span> &nbsp; &nbsp;
+            <span class="message-data-name">{{msg.userName}}</span> <i class="fa fa-circle me"></i>
+            <span><img [src]="msg.avatarUrl" class="img-room teal" /></span>
+          </div>
+          <div class="message other-message float-right">
+            {{msg.text}}
+          </div>
+
+        </li>
+
+        <li *ngIf="msg.userid!==userid">
+          <div class="message-data">
+            <span><img [src]="msg.avatarUrl" class="img-room teal" /></span>
+            <span class="message-data-name"><i class="fa fa-circle online"></i> {{msg.userName}}</span>
+            <span class="message-data-time">{{msg.date | date:'shortTime'}}</span>
+          </div>
+          <div class="message my-message">
+            {{msg.text}}
+          </div>
+        </li>
+      </ul>
+
+    </div>
+    <!-- end chat-history -->
+
+    <div class="chat-message clearfix">
+      <textarea name="message-to-send" [(ngModel)]="message" id="message-to-send" placeholder="Type your message" rows="3" (keyup.enter)="sendMessage()"></textarea>
+      <button class="btn waves-effect waves-light" (click)="sendMessage()">Send<i class="material-icons right">send</i></button>
+    </div>
+    <!-- end chat-message -->
+
+  </div>
+  <div class="col m3 l3 list-view">
+    <div class="card">
+      <div class="card-image">
+        <img src="/assets/img/prasna.png" class="img img-responsive">
+        <span class="card-title">Listen Nepali Radio</span>
+      </div>
+      <ul class="collection card-content" style="height: 225px;overflow-y: scroll">
+        <li class="collection-item avatar">
+          <img src="images/yuna.jpg" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br> Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <img src="images/yuna.jpg" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br> Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+      </ul>
+      <audio controls preload="metadata">
+        <source [src]="radio" type="audio/mpeg"> Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+  <!-- end chat -->
+
+</div>
+<!-- end container -->

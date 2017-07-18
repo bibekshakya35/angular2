@@ -1,0 +1,9 @@
+<ul class="collection" *ngIf="show">
+    <li class="collection-item avatar" *ngFor="let d of donars">
+        <img [src]="d?.avatarUrl" alt="" class="circle">
+        <span class="title">{{d?.name}}</span>
+        <p><a [href]="d?.emailid">Send An Email :{{d?emailid}} </a> <br> Mobile Number: {{d?.mobile}}
+        <br><small class=""></small>
+        </p>
+    </li>
+</ul>

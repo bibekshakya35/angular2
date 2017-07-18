@@ -1,0 +1,28 @@
+
+.error {
+  font-size: 13px;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  padding: 15px;
+  margin: -26px 0 15px;
+}
+label {
+  display: block;
+}
+span {
+  display: block;
+  margin: 0 0 10px;
+}
+  .quill-editor {
+       min-height: 16em;
+       max-height: 20em;
+       overflow-y: auto;
+     }
+
+    i:hover{
+      cursor: pointer;
+    }
+    i{
+      margin-top:0.5em;
+    }

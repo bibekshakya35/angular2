@@ -1,0 +1,165 @@
+<app-category>
+
+</app-category>
+<md-card>
+  <tabset #staticTabs>
+    <tab heading="English">
+      <div class="row">
+
+        <div class="col-md-8">
+          <form name="form" class="form-horizontal" method="POST" (ngSubmit)="addQuestion()" [formGroup]="questionAddForm">
+            <div class="box-body">
+
+              <label> 
+        <span class="lead"> Title</span>       
+          <input class="form-control" formControlName="title" placeholder="title of your question" required/>
+      </label>
+
+              <div *ngIf="questionAddErrors?.title" class="error">
+                {{ questionAddErrors?.title }}</div>
+
+              <span class="lead"> Question Body </span>
+
+              <label class="quill-editor">
+  <quill-editor [options]="editorConfig"
+              [formControl]="body"
+              class="quill-editor"
+             ></quill-editor>
+    </label>
+
+
+              <div *ngIf="questionAddErrors?.body" class="error" style="margin-top:10px;">
+                {{ questionAddErrors?.body }}</div>
+
+              <div [innerHtml]="body.value" id="inner-content"></div>
+
+
+              <label> <span class="lead"> Category </span>
+               <button class="btn text-center btn-category" *ngFor="let c of categoryLabel">{{c}}</button>
+        <div class="row">
+          <div class="col-md-9">
+                   <input type="text" formControlName="category" [(ngModel)]="value" placeholder="Enter multiple categories by clicking plus" >
+          </div>
+          <div class="col-md-3">
+             <i class="fa fa-plus fa-4x pull-left" (click)="onSpace($event);"></i>
+          </div>
+        </div>
+     
+      
+      </label>
+              <div *ngIf="isCategoryNull" class="error">
+                Category is required</div>
+
+
+              <label>
+        <div class="col-md-offset-2 pull-left">
+          <button class="btn btn-primary" [disabled]="!questionAddForm.valid">Add Question</button>
+          <button class="btn btn-default">Cancel</button>
+        </div>
+     </label>
+
+            </div>
+          </form>
+
+
+        </div>
+        <div class="col-md-4">
+          <div class="box " style="background-color: #e6ffe6;margin-top:50px;">
+            <div class="box-header">
+              <h4> How to Ask</h4>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <p class="text-center;">Is This Question address the nepali context?</p>
+                <ul>
+                  <li>We prefered question which can be answered not only for discussed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Nepali">
+      <div class="row">
+
+        <div class="col-md-8">
+          <form name="form" class="form-horizontal" method="POST" (ngSubmit)="addQuestion() && !questionAddForm.valid" [formGroup]="questionAddForm">
+            <div class="box-body">
+
+              <label> 
+        <span class="lead"> Title</span> 
+          <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide the to nepali</a>      
+          <input class="form-control" formControlName="title" placeholder="title of your question" required/>
+      </label>
+              <small>Look below to format your question in nepali correctly.</small>
+              <div *ngIf="questionAddErrors?.title" class="error">
+                {{ questionAddErrors?.title }}</div>
+
+              <span class="lead"> Question Body </span>
+
+              <label>
+                  <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide to nepali</a>
+                            <textarea  [formControl]="body"  class="materialize-textarea lead"></textarea>
+                            
+
+    </label>
+
+
+              <div *ngIf="questionAddErrors?.body" class="error" style="margin-top:10px;">
+                {{ questionAddErrors?.body }}</div>
+
+              <div [innerHtml]="body.value"></div>
+
+
+              <label> <span class="lead"> Category </span>
+               <button class="btn text-center btn-category" *ngFor="let c of categoryLabel">{{c}}</button>
+        <div class="row">
+          <div class="col-md-9">
+              <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide to nepali</a>
+            <input type="text" formControlName="category" [(ngModel)]="value" placeholder="Enter multiple categories by clicking plus" >
+          </div>
+          <div class="col-md-3">
+             <i class="fa fa-plus fa-4x pull-left" (click)="onSpace($event)"></i>
+          </div>
+        </div>
+     
+      
+      </label>
+              <div *ngIf="isCategoryNull" class="error">
+                Category is required</div>
+
+
+              <label>
+        <div class="col-md-offset-2 pull-left">
+          <button class="btn btn-primary" [disabled]="!questionAddForm.valid">Add Question</button>
+          <button class="btn btn-default">Cancel</button>
+        </div>
+     </label>
+
+            </div>
+          </form>
+
+
+        </div>
+        <div class="col-md-4">
+          <div class="box " style="background-color: #e6ffe6;margin-top:50px;">
+            <div class="box-header">
+              <h4> How to Ask</h4>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <p class="text-center;">Is This Question address the nepali context?</p>
+                <ul>
+                  <li>We prefered question which can be answered not only for discussed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+
+  </tabset>
+
+</md-card>

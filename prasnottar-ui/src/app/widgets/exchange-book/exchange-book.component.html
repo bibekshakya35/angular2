@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col s12 l6 m6 offset-m3 offset-l3">
+    <div class="flexsearch ">
+      <div class="flexsearch--wrapper">
+        <div class="flexsearch--form">
+          <div class="flexsearch--input-wrapper">
+            <input class="flexsearch--input novalidate" type="search" placeholder="ask book you wanna exchange with .." data-target="modal1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal1" class="modal modal-fixed-footer card">
+  <div class="modal-content card-content">
+    <div class="row">
+      <h4>Book You Have</h4>
+      <div class="row">
+        <div class="input-field col s12 m6 l6">
+          <input id="book_name" type="text" class="validate" [(ngModel)]="bookIHave" required>
+          <label for="book_name">Book Name</label>
+        </div>
+        <div class="input-field col s12 m6 l6">
+          <input id="author" type="text" class="validate" [(ngModel)]="authorOrPublicationIHave">
+          <label for="author">Author/Publication(both)</label>
+        </div>
+      </div>
+      <h4>Book You want</h4>
+      <div class="row">
+        <div class="input-field col s12 m6 l6">
+          <input id="book_name" type="text" class="validate" [(ngModel)]="bookIWant">
+          <label for="book_name">Book Name</label>
+        </div>
+        <div class="input-field col s12 m6 l6">
+          <input id="author" type="text" class="validate" [(ngModel)]="authorOrPublicationIWant">
+          <label for="author">Author/Publication(both)</label>
+        </div>
+      </div>
+      <div class="row">
+        <h4>How to contact you? <small class="red">(Need one)</small></h4>
+
+        <div class="input-field col s12 m6 l6">
+          <i class="material-icons prefix">email</i>
+          <input id="email" type="email" class="validate" [(ngModel)]="emailMe">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12 m6 l6">
+          <i class="material-icons prefix">phone</i>
+          <input id="icon_telephone" type="text" class="validate" [(ngModel)]="callOrSmsMe">
+          <label for="icon_telephone">Mobile Number</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <a routerLink="/exchange" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+  </div>
+</div>

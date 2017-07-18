@@ -1,0 +1,90 @@
+<div class="modal-content">
+  <div class="section"></div>
+  <div class="row">
+    <div class="col m12 l12">
+      <h5 class="flow-text">Be A Blood Donar</h5>
+      <br>
+      <p-growl [value]="msgs"></p-growl>
+      <p-steps [model]="items" [activeIndex]="activeIndex" styleClass="steps-custom"></p-steps>
+      <div class="section"></div>
+      <div class="row" *ngIf="activeIndex===0">
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <input id="first_name" [(ngModel)]="name" type="text" class="validate" required>
+            <label for="first_name">Your Name</label>
+          </div>
+          <div class="input-field col s6 m6 l6">
+            <input id="location" [(ngModel)]="location" type="text" class="validate" required>
+            <label for="location">Your Current Location</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <input id="city" type="text" [(ngModel)]="city" class="validate" required>
+            <label for="city">City</label>
+          </div>
+          <div class="input-field col s12 m12 l12">
+
+            <label>Blood Group</label><br>
+            <select [(ngModel)]="bloodGroup" class="browser-default">
+                 <option value="" disabled selected>Choose your Blood Group</option>
+                   <option *ngFor="let b of bloodGroups" [ngValue]="b">{{b}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12">
+            <input type="date" class="datepicker" [(ngModel)]="dob">
+            <label for="date">Date of Birth</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input id="mobile_number" type="text" class="validate" [(ngModel)]="mobile">
+            <label for="mobile_number">Mobile Number</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input id="email" type="email" class="validate" [(ngModel)]="email">
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="activeIndex===1">
+        <div class="row">
+
+          <div class="input-field col s12 m12 l12">
+            <input id="disease" type="text" class="validate" [(ngModel)]="disease">
+            <label for="disease">Any Disease</label>
+          </div>
+          <div class="input-field col s12 m12 l12">
+            <input id="contact" type="text" class="validate" [(ngModel)]="contactTime">
+            <label for="contact">Contact Time</label>
+          </div>
+          <div class="input-field col s12 m12 l12">
+            <label>Last time</label><br>
+            <select [(ngModel)]="lastBloodDuration" class="browser-default">
+                 <option value="" disabled selected>How long has it been since your last blood donation?</option>
+                   <option *ngFor="let b of bloodDonationDuration" [ngValue]="b.value">{{b.display}}</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="activeIndex===2">
+        <h5>You're a life saver</h5>
+        <p class="flow-text">
+          Donation of Blood means a few minutes to you but a lifetime for somebody else.
+          <br> Your blood is replaceable. A life is not.
+          <br> At 18 You Grow Up. At 18 You Drive. At 18 You Give Blood To Keep Someone Alive.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn waves-effect waves-light" style="margin-left:10px;" (click)="onNext()">{{activeIndex==2?"Submit":"Next"}}
+    <i class="material-icons right">send</i>
+  </button>
+  <button class="btn waves-effect waves-light" style="margin-left:10px;" (click)="onCancel()">Cancel
+    
+  </button>
+</div>

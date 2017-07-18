@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="input-field col s12 m8 l8">
+    <i class="material-icons prefix">mode_edit</i>
+    <input id="icon_prefix" type="text" class="validate quickQuestion" data-target="modal1" name="title">
+    <label for="icon_prefix">What is your question?</label>
+  </div>
+
+</div>
+<div id="modal1" class="modal modal-fixed-footer card">
+  <div class="modal-header" *ngIf="isNotLoggedIn">
+
+    <p class="light flow-text">
+      Since You have not been Logged in. Your name will be NEPALI to us, please read the rule carefully. For Better experience
+      <a routerLink="/login">Login</a></p>
+
+  </div>
+  <div class="modal-content card-content">
+    <app-add-question></app-add-question>
+  </div>
+  <div class="modal-footer">
+    <a routerLink="/prasna" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+  </div>
+</div>

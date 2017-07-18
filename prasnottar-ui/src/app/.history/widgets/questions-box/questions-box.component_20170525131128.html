@@ -1,0 +1,107 @@
+
+<div class="row">
+    <div class="magicQBox">
+        <div class="row " style="margin-bottom: 20em;">
+
+            <div class="col m2 l2 list-view">
+                <app-fav-category></app-fav-category>
+                <p-fieldset legend="Your Fav Categories" [toggleable]="true" [collapsed]=false>
+                    <div class="collection" *ngFor="let c of favCategories">
+                        <a (click)="onCategoryClick(c)" class="collection-item">{{c}}</a>
+                    </div>
+                </p-fieldset>
+            </div>
+            <div class="col s12 m8 l8">
+              
+                </div>
+                <table *ngIf="!isLoading" class="centered card tooltippedForQuestionRow " [mfData]="posts" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+                    <thead class="card-title">
+                        <tr>
+                            <th colspan="100%">
+                                <div class="col s12 l12 m12">
+                                    <app-quick-question></app-quick-question>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="card-content">
+                        <tr *ngFor="let item of mf.data" (click)="question(item?._id)" data-position="top" data-delay="50" data-tooltip="Click to see more"
+                            class=" qbox  hoverable">
+                            <td>
+                                <div class="row">
+                                    <div class="col m8 s12 l8">
+                                        <div class="row">
+                                            <h5 class="light left">{{item?.title | truncate : 25}}</h5>
+                                        </div>
+                                        <div class="row">
+
+                                            <p class="light left"><i class="fa fa-user" aria-hidden="true"></i> Asked By: <b>{{item?.author}}</b>
+                                                <small>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Asked On : {{item?.date | date}}
+                                            </small>
+                                            </p>
+                                        </div>
+                                        <div class="row">
+                                            <span *ngFor="let c of item?.categories" class="chip left">
+                                                {{c}}
+                                        </span>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col m2 s2 l2 card answer-section">
+
+                                        <p>{{item?.score}}</p>
+                                        <h6>{{item?.score >1 ===true ? "Votes" : "Vote"}}</h6>
+
+
+                                    </div>
+                                    <div class="col m2 s2 l2 card answer-section">
+
+                                        <p>{{item?.answers===undefined ? 0 : item?.answers?.length}}</p>
+                                        <h6>{{item?.answers?.length >1 ===true ? "Answers" : "Answer"}}
+                                        </h6>
+
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+
+
+            </div>
+            <div class="col m2 l2 list-view">
+
+                <div class="row">
+                    <app-category></app-category>
+                    <p-fieldset legend="Top 5 Category" [toggleable]="true" [collapsed]=false>
+                        <div class="collection" *ngFor="let c of topCategories">
+                            <a (click)="onCategoryClick(c?.name)" class="collection-item">{{c?.name}}</a>
+                        </div>
+                    </p-fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-floating btn-large red tooltippedForAddQuestionBtn" routerLink="/sodumprasna" data-position="top" data-delay="50"
+                data-tooltip="Click to Add new Question">
+                <i class="material-icons">add</i>
+            </a>
+
+        </div>
+    </div>
+</div>

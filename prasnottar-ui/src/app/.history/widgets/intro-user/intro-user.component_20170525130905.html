@@ -1,0 +1,103 @@
+<div class="row" *ngIf="!show">
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="loader">
+    Loading...
+  </div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+  <div class="section"></div>
+</div>
+
+<div class="card-panel hoverable row">
+  <div class="col m3 s12 l3">
+    <figure class="snip1344"><img [src]="user.avatarUrl" alt="profile-sample1" class="background" /><img [src]="user.avatarUrl" alt="profile-sample1"
+        class="profile" />
+      <figcaption>
+        <h3>{{user.name}}</h3>
+        <div class="content">
+          <div class="data">
+            <ul>
+              <li>
+                {{askedPost?.length}}
+                <span>Question</span>
+              </li>
+              <li>
+                {{answeredPost?.length}}
+                <span>Answer</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="col m9 l9 s12">
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Tag Used</span>
+            <hr>
+            <span class="chip" *ngFor="let c of categories" (click)="boxClick(c)">{{c}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Your Favourite Tag</span>
+            <hr>
+            <span class="chip" *ngFor="let f of favCategories" (click)="boxClick(f)">{{f}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">You've Asked Question</span>
+          <hr>
+          <p-accordion>
+            <p-accordionTab header="{{asked.title}}" *ngFor="let asked of askedPost">
+              <div class="card">
+                <div class="card-content">
+                  <div [innerHtml]="asked.body"></div>
+                </div>
+                <div class="card-action"><a [routerLink]="['/prasna/uttar/',asked._id]">Read More</a></div>
+              </div>
+
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">You've Answered</span>
+          <hr>
+          <p-accordion>
+            <p-accordionTab header="{{asked.title}}" *ngFor="let asked of answeredPost">
+              <div class="card">
+                <div class="card-content">
+                  <div [innerHtml]="asked.body"></div>
+                </div>
+                <div class="card-action"><a [routerLink]="['/prasna/uttar/',asked._id]">Read More</a></div>
+              </div>
+
+            </p-accordionTab>
+          </p-accordion>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

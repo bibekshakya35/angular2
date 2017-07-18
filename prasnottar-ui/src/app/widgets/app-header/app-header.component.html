@@ -1,0 +1,91 @@
+<nav class="light-blue lighten-1" role="navigation">
+	<ul class="left">
+		<li>
+			<a href="#" class="brand-logo"><img src="/assets/img/prasna-logo.jpg" class="logo" style="width:5em;height:2em;"></a>
+		</li>
+	</ul>
+	<div class="nav-wrapper container">
+
+
+		<ul class="left hide-on-med-and-down">
+			<li><a routerLink="/prasna">Prasna</a></li>
+			<li><a routerLink="/raktadan">Raktadan</a></li>
+			<li><a routerLink="/nearby">Nearby</a></li>
+			<li><a routerLink="/chatrooms">Chatrooms</a></li>
+		</ul>
+
+		<ul class="right hide-on-med-and-down" *ngIf="user?.connected">
+
+			<li class="dropdown notification">
+				<a class="dropdown-button" class='dropdown-button' (click)="op.toggle($event)">
+					<i class="material-icons">notifications</i>
+				</a>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-button" class="dropdown-button" routerLink="/profile">
+					<div class="chip">
+						<img [src]="user?.avatarUrl" class="circle responsive-img" [alt]="user?.name"> {{user?.name}}
+					</div>
+				</a>
+			</li>
+
+		</ul>
+
+		<ul class="right hide-on-med-and-down" *ngIf="!user?.connected">
+			<li><a routerLink="/login"><i class="fa fa-sign-in" ></i>  Login</a></li>
+
+		</ul>
+
+		<ul id="nav-mobile" class="side-nav" *ngIf="user?.connected">
+			<li><a routerLink="/prasna">Prasna</a></li>
+			<li><a routerLink="/raktadan">Raktadan</a></li>
+
+			<li><a routerLink="/nearby">Nearby</a></li>
+			<li><a routerLink="/chatrooms">Chatrooms</a></li>
+			<li class="dropdown notification">
+				<a class="dropdown-button" href="#!" data-activates="dropdownmob2">
+					<i class="material-icons">notifications</i>
+				</a>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-button" routerLink="/profile">
+					<div class="chip">
+						<img [src]="user?.avatarUrl" class="circle responsive-img" [alt]="user?.name"> {{user?.name}}
+					</div>
+				</a>
+			</li>
+		</ul>
+		<ul id="nav-mobile" class="side-nav" *ngIf="user?.connected">
+			<li><a routerLink="/prasna">Prasna</a></li>
+			<li><a routerLink="/raktadan">Raktadan</a></li>
+			<li><a routerLink="/nearby">Nearby</a></li>
+			<li><a routerLink="/chatrooms">Chatrooms</a></li>
+			<li><a routerLink="/login"><i class="fa fa-sign-in" ></i>  Login</a></li>
+		</ul>
+		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+	</div>
+</nav>
+
+<p-overlayPanel #op>
+
+	<ul class="collection card">
+		<li *ngFor="let noti of loggers" class="collection-item">
+			<a [href]="noti?.pageLink" (click)="readNotification(noti?._id)">
+				<p [innerHtml]="noti?.body"></p>
+			</a>
+			<hr style="border: 2px solid gray;">
+		</li>
+	</ul>
+</p-overlayPanel>
+
+<ul id="dropdownmob2" class="dropdown-content collection">
+	<li class="collection-item" *ngIf="(loggers | json) == '[]'"><span class="secondary-content">No Updated on your reputation</span></li>
+	<li class="collection-item" *ngFor="let noti of loggers">
+
+		<a [href]="noti?.pageLink" class="secondary-content" (click)="readNotification(noti?._id)">
+			<div [innerHtml]="noti?.body"></div>
+		</a>
+	</li>
+</ul>
+
+<!-- user Toggle Button -->

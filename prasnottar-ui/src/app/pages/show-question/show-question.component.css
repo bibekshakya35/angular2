@@ -1,0 +1,136 @@
+.error {
+  font-size: 13px;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  padding: 15px;
+  margin: -26px 0 15px;
+}
+i:hover{
+  cursor: pointer;
+}
+label {
+  display: block;
+}
+#inner-content{
+    word-wrap: break-word;
+}
+textarea { font-size: 18px; }
+.naya_convert{
+  font-size: 14px;
+  color: silver;
+}
+   quill-editor {
+       min-height: 16em;
+       max-height: 20em;
+       overflow-y: auto;
+     }
+     .preview {
+       min-height: 10em;
+       max-height: 16em;
+       overflow-y: auto;
+       border: 1px solid #eee;
+       border-top: none;
+     }
+    
+
+ #caret{
+     	font-size: 40px;
+     	color: silver;
+     }
+
+     #left-content{
+     	margin-top: 50px;
+     }
+     
+
+     @media(min-width: 768px){
+     	.ndnav ul{
+              	display: none;
+              	
+              }
+         .lower-nav{
+          display: none;
+         }
+              #clsp_menu-mini{
+              	display: none;
+              }
+            
+     }
+     
+     	  @media(max-width:767px ){
+     	  	#navbar-main{
+     	  		background-color: #2c3e50;
+     	  		
+     	  	}
+     	  	#navbar-main ul li {
+     	  		
+
+     	  	}
+
+     	  	#inner-nav{
+     	  		background-color: #2c3e50;
+     	  	}
+     	  	.brnd{
+     	  		margin-left: 45%;
+     	  	}
+     	  	#hide-menu{
+     	  		background-color: red;
+     	  	}
+           }
+     	  	@media(max-width: 767px){
+              .ndnav {
+              	display: inline-block;
+              	margin-top: 50px;
+              	width: 100%;
+              	
+              	background-color:#4D5659;
+              }
+               .lower-nav{
+          margin-bottom: 30px;
+          width: 100%;
+                  }
+                  .lower-nav ul{
+                    list-style-type: none;
+                  }
+                  .lower-nav ul li{
+                    display: inline;
+                    padding: 10px;
+                  }
+              .ndnav ul{
+              	list-style-type: none;
+
+              }
+
+               .ndnav ul li {
+                display: inline-block;
+              }
+              #clsp_menu-mini{
+                margin-top: -30px;
+                float: right;
+                height: 200px;
+                
+              }
+
+             
+     	  	}
+     	  
+     	.addedby{
+         font-size: 1em;
+         color: silver;
+       }
+       .btn-category{
+         background-color: #f7e18a;
+         color:black;
+       }
+h2{
+  font-family: sans-serif;
+  font-size: 20px;
+  display: inline-block;
+ float: left;
+}
+@media(max-width: 900px){
+  .list-view{
+    display: none;
+  }
+}

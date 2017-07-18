@@ -1,0 +1,58 @@
+<article class="cssui-usercard">
+    <div class="cssui-usercard__body" *ngFor="let d of donars">
+        <header class="cssui-usercard__header">
+            <img [src]="d?.avatarUrl" class="cssui-usercard__avatar" alt="Avatar">
+            <div class="cssui-usercard__header-info">
+                <h3 class="cssui-usercard__name">Stas <span class="cssui-usercard__name-label">Melnikov</span></h3>
+                <span class="cssui-usercard__post">UI Developer</span>
+            </div>
+        </header>
+        <div class="cssui-usercard__content">
+            <div class="cssui-slider">
+
+                <!-- the control elements of slider -->
+
+                <div class="cssui-slider__slides">
+
+                    <!-- first slide -->
+
+                    <div class="cssui-slider__slide">
+                        <h4 class="cssui-usercard__title">About Donar</h4>
+                        <div class="cssui-usercard__stats">
+                            <div class="cssui-stats cssui-usercard__stats-item">
+                                <i class="cssui-icon icon-earth"></i>
+                                <div class="cssui-stats__info cssui-usercard__stats-info">
+                                    <span class="cssui-stats__name cssui-usercard__stats-name">Language</span>
+                                    <span class="cssui-stats__value">English</span>
+                                </div>
+                            </div>
+                            <div class="cssui-stats cssui-usercard__stats-item">
+                                <i class="cssui-icon icon-location"></i>
+                                <div class="cssui-stats__info cssui-usercard__stats-info">
+                                    <span class="cssui-stats__name cssui-usercard__stats-name">Hometown</span>
+                                    <span class="cssui-stats__value">London</span>
+                                </div>
+                            </div>
+                            <div class="cssui-stats cssui-usercard__stats-item">
+                                <i class="cssui-icon icon-calendar"></i>
+                                <div class="cssui-stats__info cssui-usercard__stats-info">
+                                    <span class="cssui-stats__name cssui-usercard__stats-name">Date of birth</span>
+                                    <span class="cssui-stats__value">03 December 1990</span>
+                                </div>
+                            </div>
+                            <div class="cssui-stats cssui-usercard__stats-item">
+                                <i class="cssui-icon icon-man-woman"></i>
+                                <div class="cssui-stats__info cssui-usercard__stats-info">
+                                    <span class="cssui-stats__name cssui-usercard__stats-name">Relationship</span>
+                                    <span class="cssui-stats__value">Married</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</article>

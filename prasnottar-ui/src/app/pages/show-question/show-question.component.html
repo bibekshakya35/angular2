@@ -1,0 +1,132 @@
+<div class="row" style="margin-bottom:20em;" *ngIf="isLoading">
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="sk-circle col offset-m5 offset-s5 offset-l5">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
+
+    </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+</div>
+
+<div class="row" style="margin-bottom:20em;" *ngIf="!isLoading">
+    <div class="row">
+
+        <div class="col m1 l1">
+
+        </div>
+
+        <div class="col m9 l9 s12">
+
+            <div class="row">
+                <div class="col s1 m1 l1"></div>
+                <div class="col s1 m1 l1" id="left-content">
+
+                    <img [src]="post?.imageUrl" class="circle" style="width:5em;height: 4em; padding:0;margin-left:-2em;">
+                    <div>
+                        <i class="fa fa-caret-up" (click)="upvote() && isQuestionVoteClicked = true" [class.disabled]="isQuestionVoteClicked" aria-hidden="true"
+                            id="caret" [style.color]="isUpvoteClicked ===true?'red':'silver'"></i><br>
+                        <span style="margin:0.4em;"><strong> {{post?.score}}</strong></span><br>
+                        <i class="fa fa-caret-down" aria-hidden="true" id="caret" (click)="downvote() && isQuestionVoteClicked = true" [class.disabled]="isQuestionVoteClicked"
+                            [style.color]="isDownVoteClicked ===true?'red':'silver'"></i>
+                    </div>
+                </div>
+                <div class="col s9 l9 m9">
+                    <h3 class="light header">{{post?.title}}</h3>
+                    <p class="addedby" style="float: right;"><span>Added By </span><span><a href="#">{{post?.author}}</a> On {{post?.date | date }}</span></p>
+                    <div id="pub_auth_authp">
+                        <span class="chip" *ngFor="let c of post?.categories" (click)="boxClick(c)">{{c}}</span>
+                        <div class="fb-share-button" data-href="pageUrl" data-layout="button_count">
+                        </div>
+                    </div>
+
+                    <hr style="border-top: 2px dotted silver;margin-top:1em;" />
+                    <div id="inner-content" [innerHtml]="post?.body">
+
+                    </div>
+                    <hr style="border-top: 4px solid silver;margin-top:1.5em;" />
+                    <div id="inner-content-1" *ngFor="let answer of post?.answers">
+                        <div class="col s1 l1 m1">
+
+                            <div>
+                                <i class="fa fa-caret-up" aria-hidden="true" id="caret" (click)="upvoteans(answer?.userid,answer?.id) && isAnswerVoteChecked=true"
+                                    [class.disabled]="isAnswerVoteChecked"></i><br>
+                                <span style="margin:0.4em;"><strong>  {{answer?.score}}</strong></span><br>
+                                <i class="fa fa-caret-down" aria-hidden="true" id="caret" (click)="downvoteans(answer?.userid,answer?.id) && isAnswerVoteChecked=true"
+                                    [class.disabled]="isAnswerVoteChecked"></i>
+                            </div>
+                        </div>
+                        <div class="col s11 m11 l11" id="inner-content" [innerHtml]="answer?.body">
+                        </div>
+                        <p class="addedby" style="float: right;"><span> Added By </span><span><a href="#">  {{answer.author}} </a> On: {{answer?.createdOn | date}} </span></p>
+                        <br>
+                        <div style="clear: both;"></div>
+                        <hr style="border-top: 4px solid silver" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col m2 l2"></div>
+                <form name="form" [formGroup]="answerForm" (ngSubmit)="addAnswer()">
+                    <div class="col m8 s12 l8 offset-1">
+                        <div class="row">
+                            <h4 class="light">Submit Your Answer</h4>
+                        </div>
+                        <div class="row">
+                            <p-tabView>
+                                <p-tabPanel header="English">
+                                    <p-editor [formControl]="body" [style]="{'height':'170px'}" placeholder="Enter your question briefly">
+                                        <p-header>
+                                            <span class="ql-formats">
+                                        <button class="ql-bold"></button>
+                                        <button class="ql-italic"></button>
+                                        <button class="ql-underline"></button>
+                                    </span>
+
+                                        </p-header>
+                                    </p-editor>
+                                </p-tabPanel>
+                                <p-tabPanel header="Nepali`">
+                                    <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide to Nepali</a>
+                                    <textarea [formControl]="body" [style]="{'height':'200px'}" class="materialize-textarea"></textarea>
+
+                                    <small>
+                                Please look below the text area for proper format in nepali<br><b>Credit goes to http://naya.com.np</b>
+                        </small>
+                                </p-tabPanel>
+
+                            </p-tabView>
+
+                        </div>
+
+                        <div *ngIf="answerError?.body" class="error" style="margin-top:10px;">
+                            {{ answerError?.body }}</div>
+                        <div [innerHtml]="body.value"></div>
+
+                        <div class="form-group">
+                            <button class="btn btn-info" [disabled]="!answerForm?.valid">Add Answer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col m2 l2 list-view">
+            <app-category></app-category>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col m6 l6 s12" *ngFor="let d of donars">
+        <article class="cssui-usercard">
+            <div class="cssui-usercard__body">
+                <header class="cssui-usercard__header">
+                    <div class="col m3 l3 s3"></div>
+                    <div class="col m6 l6 s6"> <img [src]="d?.avatarUrl" class="cssui-usercard__avatar" alt="Avatar"></div>
+                    <div class="col m3 l3 s3"></div>
+                </header>
+                <div class="cssui-usercard__content">
+                    <div class="cssui-slider">
+
+                        <div class="cssui-slider__slides">
+
+                            <div class="cssui-slider__slide">
+                                <h4 class="cssui-usercard__title">{{d?.name}}</h4>
+                                <div class="cssui-usercard__stats">
+                                    <div class="cssui-stats cssui-usercard__stats-item">
+                                        <i class="cssui-icon icon-earth"></i>
+                                        <div class="cssui-stats__info cssui-usercard__stats-info">
+                                            <span class="cssui-stats__name cssui-usercard__stats-name">Language</span>
+                                            <span class="cssui-stats__value">English</span>
+                                        </div>
+                                    </div>
+                                    <div class="cssui-stats cssui-usercard__stats-item">
+                                        <i class="cssui-icon icon-location"></i>
+                                        <div class="cssui-stats__info cssui-usercard__stats-info">
+                                            <span class="cssui-stats__name cssui-usercard__stats-name">Hometown</span>
+                                            <span class="cssui-stats__value">London</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</div>

@@ -1,0 +1,305 @@
+<div class="row" *ngIf="!showPlaceSearch">
+  <div class="col s12 l6 m6 offset-m3 offset-l3">
+
+    <div class="flexsearch ">
+      <div class="flexsearch--wrapper">
+        <div class="flexsearch--form">
+          <div class="flexsearch--input-wrapper">
+            <input class="flexsearch--input novalidate  " (keyup.enter)="searchPlace()" [(ngModel)]="placeToGo" type="search" placeholder="Nearby place you want to travel...">
+          </div>
+          <input class="flexsearch--submit" type="submit" value="&#10140;" (click)="searchPlace()" />
+        </div>
+      </div>
+
+      <div class="preloader-wrapper big active" *ngIf="isLoading">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col offset-l3 offset-m3">
+      <button class="btn waves-effect waves-light requestPost" data-target="modal1" (click)="showPlace()" name="action">Add A Place Story
+    <i class="material-icons right">edit</i>
+    </button>
+
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="showPlaceSearch">
+  <div class="col m2 l2"></div>
+  <div class="card-panel hoverable col m8 l8" *ngIf="!isLoading">
+    <div class="card ">
+      <div class="card-image">
+        <img [src]="mainImage" class="materialboxed" width="650" style="height:300px;">
+        <span class="card-title header lead">{{placePortFolio?.place}}</span>
+      </div>
+      <div class="card-content">
+        <p-accordion class="card">
+          <p-accordionTab header="Read About {{placeToGo}}">
+            <p class="flow-text" style="font-size: 14px;">
+              Place : {{placePortFolio?.place}}
+              <br> City : {{placePortFolio?.city}}<br> Zone : {{placePortFolio?.zone}}<br> Region: {{placePortFolio?.region}}
+              <br><br>{{description}}
+            </p>
+
+          </p-accordionTab>
+        </p-accordion>
+
+        <div class="card">
+          <div class="card-content">
+            <p-lightbox [images]="galleries"></p-lightbox>
+          </div>
+        </div>
+
+        <p-accordion class="card">
+          <p-accordionTab header="Accommodation in {{placeToGo}}">
+            <div class="row">
+              <div class="col m4 l4 s4" *ngFor="let h of hotelList">
+                <div class="card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" [src]="h.photo" height="150">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4" style="font-size: 14px;">{{h.hotelName}}<i class="material-icons right">more_vert</i></span>
+                    <p><a href="#">This is a link</a></p>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+        <p-accordion class="card">
+          <p-accordionTab header="Food, Cafe & Drinks in {{placeToGo}}">
+            <div class="row">
+              <div class="col m4 l4 s4" *ngFor="let r of resturantList">
+                <div class="card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" [src]="r.photo" height="150">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4" style="font-size: 14px;">{{r.resturantName}}<i class="material-icons right">more_vert</i></span>
+                    <p><a href="#">This is a link</a></p>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+
+
+
+
+      </div>
+
+    </div>
+    <div class="col m2 l2"></div>
+  </div>
+</div>
+<div class="row" *ngIf="!showPlaceSearch">
+
+  <div class="wrap">
+    <div class="tile" *ngFor="let p of placeStories">
+      <img [src]='IMAGEURL+p?.picture' />
+      <div class="text">
+        <h1>{{p.place}}</h1>
+        <p class="animate-text"><q> {{p?.story}}</q> -{{p?.name}}
+        </p>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!showPlaceSearch">
+
+    <div class="wrap">
+      <div class="tile">
+        <img src='/assets/img/pokhara.jpg' />
+        <div class="text">
+          <h1>Pokhara</h1>
+          <p class="animate-text"><q> Pokhara ticks all the right boxes, with spectacular scenery, adventure activities, and accommodation and food choices galore. Whether you’ve returned from a three-week trek or endured a bus trip from hell, Lakeside Pokhara is the perfect place to recharge your batteries.</q>-lonely
+            Planet
+          </p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tile">
+        <img src='/assets/img/uppermustang.jpg' />
+        <div class="text">
+          <h1>Upper Mustang</h1>
+          <p class="animate-text"><q>Get the rare privilege to trek to the exotic land beyond the Himalayas </q>-welcomenepal</p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile">
+        <img src='/assets/img/phoksundo.jpg' />
+        <div class="text">
+          <h1>Phoksundo Lake</h1>
+          <p class="animate-text">
+            <q>
+           alpine fresh water oligotrophic lake
+        </q> -Wikipedia
+          </p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--2ND GRID-->
+    <div class="wrap">
+      <div class="tile">
+        <img src='/assets/img/dolpa.jpg' />
+        <div class="text">
+          <h1>Dolpa</h1>
+          <p class="animate-text"><q> surrounded by Himalayan mountain chains including the Dhaulagiri (8,172 metres (26,811 ft)). These cloud barriers cause a semi-arid climate, with reported annual precipitations of less than 500 millimetres</q>            -Wikipedia
+          </p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tile">
+        <img src='/assets/img/tilicho.jpg' />
+        <div class="text">
+          <h1>Tilicho Lake</h1>
+          <p class="animate-text"><q>Annapurna Tilicho Lake Trek take you to the world highest point of Lake that lies in the Annapurna range of  the central Nepal with altitude of 4,191m that collects the glacial melt of the Mt. Annapurna and Thorong –La Pass (5,416m).  </q>-himalayanmagictreks</p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile">
+        <img src='/assets/img/annapurna.jpg' />
+        <div class="text">
+          <h1>Annapurna Base Camp</h1>
+          <p class="animate-text">
+            <q>
+           Annapurna base camp trek is an amazing walk through diverse landscape and culture complete with rich mountain vistas, terraced fields, quaint Gurung villages and a wide variety of flora and fauna. Mt. Annapurna (8091m) of Nepal is the 10th highest mountain in the world and the journey to its base camp, which is at 4130m/13549ft height, is one of the most popular walks on earth.
+        </q> -Wikipedia
+          </p>
+          <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <p-growl [value]="msgs" life="5000"> </p-growl>
+  <div id="modal1" class="modal card">
+
+    <div class="modal-content card-content ">
+      <div class="card">
+        <p-growl [value]="msgs" life="5000"> </p-growl>
+        <div class="card-content">
+
+          <div class="row">
+            <div class="col m8 s8 l8">
+              <div class="row">
+                <div class="col s12 l12 m12">
+                  <p-fileUpload url="http://www.prasnottar.com//api/nearby/image/upload" (onUpload)="onUpload($event)" chooseLabel="Upload Photo" accept="image/*"
+                    auto="auto">
+                  </p-fileUpload>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="input-field">
+                    <input id="text" type="text" maxlength="15" class="validate" placeholder="place name" [(ngModel)]="sPlaceName">
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l12 m12">
+                  <textarea id="textarea1" class="materialize-textarea" maxlength="120" placeholder="tell your story in 120 letter" [(ngModel)]="sStoryTeller"></textarea>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col m4 l4 s4">
+                </div>
+
+                <div class="col m8 l8 s8">
+                  <button class="btn btn-floating btn-large cyan pulse" [disabled]="isLoading" (click)="storyTellerForPlace()"><i class="material-icons">send</i></button>
+                  <div class="preloader-wrapper big active" *ngIf="isLoading">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div>
+                      <div class="gap-patch">
+                        <div class="circle"></div>
+                      </div>
+                      <div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="btn btn-floating btn-large red  pulse" (click)="onCancel()"><i class="material-icons">close</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col s4 l4 s4">
+              <div class="card">
+                <div class="card-image">
+                  <img [src]="IMAGEURL+picForStory" *ngIf="isImageUpload">
+                  <img src="/assets/img/annapurna.jpg" *ngIf="!isImageUpload">
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>

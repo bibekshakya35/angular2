@@ -1,0 +1,9 @@
+<ul class="collection" *ngIf="show">
+    <li class="collection-item avatar" *ngFor="let d of donars">
+        <img [src]="d?.avatarUrl" alt="" class="circle">
+        <span class="title">{{d?.name}}</span>
+        <p><a [href]="d?.emailid">Send An Email </a> <br> Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+</ul>

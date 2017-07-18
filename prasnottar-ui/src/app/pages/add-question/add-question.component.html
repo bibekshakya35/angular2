@@ -1,0 +1,130 @@
+<div class="row">
+  <p-tabView>
+    <p-tabPanel header="English" class="row">
+
+
+      <form name="form" class="col s12 m8 l8" method="POST" (ngSubmit)="addQuestion()" [formGroup]="questionAddForm">
+        <div class="input-field col s12 m12 l12">
+
+          <span class="lead"> Title</span>
+          <input class="validate" formControlName="title" placeholder="title of your question" required/>
+
+
+          <div *ngIf="questionAddErrors?.title" class="error">
+            {{ questionAddErrors?.title }}</div>
+
+
+        </div>
+        <div class="input-field col s12 m12 l12">
+          <span class="lead"> Question Body </span>
+          <p-editor [formControl]="body" [style]="{'height':'320px'}" placeholder="Enter your question briefly">
+            <p-header>
+              <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+          </span>
+
+            </p-header>
+          </p-editor>
+          <div *ngIf="questionAddErrors?.body" class="error" style="margin-top:10px;">
+            {{ questionAddErrors?.body }}</div>
+
+          <div [innerHtml]="body.value" id="inner-content"></div>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <span> Category </span>
+          <input auto-complete class="fit" formControlName="category" [source]="categoriesList" [max-num-list]=10 placeholder="Category"
+            class="form-control">
+          <div *ngIf="isCategoryNull" class="error">
+            Category is required</div>
+        </div>
+
+
+
+        <div class="input-field col s12 m12 l12">
+          <div class="offset-2">
+            <button class="btn btn-primary" [disabled]="!questionAddForm.valid">Add Question</button>
+            <button class="btn btn-default"  (click)="onCancel(); $event.preventDefault()">Cancel</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="col m4 s12 l4">
+
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h4>How to ask a question?</h4>
+          </li>
+          <li class="collection-item">a question should not be discriminating</li>
+          <li class="collection-item">a question should be constructive.</li>
+          <li class="collection-item">a question should be informative and logical </li>
+        </ul>
+
+      </div>
+
+    </p-tabPanel>
+
+    <p-tabPanel header="Nepali">
+
+
+      <form name="form" class="col s12 m8 l8" method="POST" (ngSubmit)="addQuestion()" [formGroup]="questionAddForm">
+        <div class="input-field col s12 m12 l12">
+          <span class="lead"> Title</span>
+          <br>
+          <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide to nepali</a>
+          <input class="validate" formControlName="title" placeholder="title of your question" required/>
+
+
+          <div *ngIf="questionAddErrors?.title" class="error">
+            {{ questionAddErrors?.title }}</div>
+
+
+        </div>
+        <div class="input-field col s12 m12 l12">
+          <span class="lead"> Question Body </span>
+          <br>
+          <a rel="nofollow" href="http://naya.com.np" title="Nepali Social Network" class="naya_convert">Slide to nepali</a>
+          <textarea [formControl]="body" class="materialize-textarea lead" placeholder="Enter you question breifly"></textarea>
+
+          <div *ngIf="questionAddErrors?.body" class="error" style="margin-top:10px;">
+            {{ questionAddErrors?.body }}</div>
+
+          <div [innerHtml]="body.value" id="inner-content"></div>
+        </div>
+
+        <div class="input-field col s12 m12 l12">
+          <span> Category </span>
+          <input auto-complete class="fit" formControlName="category" [source]="categoriesList" [max-num-list]=10 placeholder="Category"
+            class="form-control">
+          <div *ngIf="isCategoryNull" class="error">
+            Category is required</div>
+        </div>
+
+
+
+        <div class="input-field col s12 m12 l12">
+          <div class="offset-2">
+            <button class="btn btn-primary" [disabled]="!questionAddForm.valid">Add Question</button>
+            <button class="btn btn-default" (click)="onCancel(); $event.preventDefault()">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <div class="col m4 s12 l4">
+
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h4>How to ask a question?</h4>
+          </li>
+          <li class="collection-item">a question should not be discriminating</li>
+          <li class="collection-item">a question should be constructive.</li>
+          <li class="collection-item">a question should be informative and logical </li>
+        </ul>
+
+
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+
+</div>

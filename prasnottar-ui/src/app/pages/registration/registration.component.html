@@ -1,0 +1,49 @@
+<div class="section"></div>
+<div class="section"></div>
+<div class="row" style="margin-bottom:20em;">
+  <div class="col m3 s3 l3"></div>
+  <div class=" card col m6 l6 s6">
+    <h2 class="center light header shake-slow">Welcome to prasnottar Team</h2>
+    <p class="light flow-text" style="text-align: center;">It will only take a few second</p>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+      <com-alert></com-alert>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" class="validate" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+          <label for="name">Full Name</label>
+        </div>
+        <div *ngIf="f.submitted && !name.valid" class="help-block">fullname is required</div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+          <label for="email">Email</label>
+        </div>
+        <div *ngIf="f.submitted && !email.valid" class="help-block">email is required</div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+          <label for="password">Password</label>
+        </div>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="input-field col s12 m12 l12 card-action">
+        <div class="col m3 s3 l3"></div>
+        <div class="col m3 s3 l3">
+          <button [disabled]="loading" class="waves-effect waves-light btn blue">Register</button>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+          />
+
+
+        </div>
+        <div class="col m3 l3 s3">
+          <a routerLink="/login" class="waves-effect waves-light btn red">Login</a>
+        </div>
+        <div class="col m3 s3 l3"></div>
+      </div>
+
+    </form>
+  </div>
+  <div class="col m3 s3 l3"></div>
+</div>

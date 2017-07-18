@@ -1,0 +1,68 @@
+<div class="row" style="margin-bottom:20em;">
+
+  <div class="col s12 m2 l2">
+
+    <p-fieldset legend="Blood Group" [toggleable]="true">
+      Search
+      <p-listbox [options]="bloodSelection" [(ngModel)]="filterQuery"></p-listbox>
+    </p-fieldset>
+
+  </div>
+  <div class="overlay-loader" *ngIf="isLoading">
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="col s12 m8 l8" *ngIf="!isLoading">
+
+    <table class="centered" [mfData]="bloods | dataFilter : filterQuery | nameFilter : nameOfthePerson | locationFilter : locationOfPerson"
+      #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+        <tr>
+          <th style="width: 10%">
+            <mfDefaultSorter by="bloodgroup">Blood Group</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+            <input type="text" class="input-field col m12 s12 l12" [(ngModel)]="nameOfthePerson">
+          </th>
+          <th style="width: 40%">
+            <mfDefaultSorter by="mobile">Contact Information</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="location">Location</mfDefaultSorter>
+            <input type="text" [(ngModel)]="locationOfPerson" class="input-field col m12 s12 l12">
+          </th>
+          <th style="width:20%">
+            <mfDefaultSorter [by]="sortByWordLength">City</mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mf.data" class="blood-table">
+          <td>{{item.bloodgroup}}</td>
+          <td>{{item.name}}</td>
+          <td class="text-center">M.No: {{item.mobile}}<br>Email: {{item.email}}<br>L.No: {{item.landline}}</td>
+          <td>{{item.location}}</td>
+          <td>{{item.city | uppercase}}</td>
+          <td>{{item.status==true?Available:Unavailable}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+  <div class="col s2 m2 l2"></div>
+</div>

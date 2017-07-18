@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col  m3 l3">
+  </div>
+  <div class="col s12 l6 m6">
+    <figure class="snip1566">
+      <img src="/assets/img/beadonar.jpg" alt="sq-sample14" />
+      <figcaption><i class="ion-android-add"></i></figcaption>
+      <a data-target="modal1"></a>
+    </figure>
+    <figure class="snip1566"><img src="/assets/img/needofblood.jpg" alt="sq-sample17" />
+      <figcaption><i class="ion-android-search"></i></figcaption>
+      <a data-target="modal2"></a>
+    </figure>
+  </div>
+  <div class="col m3 l3">
+  </div>
+</div>
+<div class="row">
+  <div class="col  m3 l3">
+  </div>
+  <div class="col s12 l6 m6">
+    <figure class="snip1566">
+      <img src="/assets/img/processblood.JPG" alt="sq-sample14" style="height: 150px;" />
+      <figcaption><i class="ion-android-add"></i></figcaption>
+      <a></a>
+    </figure>
+    <figure class="snip1566"><img src="/assets/img/blood-event.png" alt="sq-sample17" style="height: 150px;" />
+      <figcaption><i class="ion-android-search"></i></figcaption>
+      <a href="#"></a>
+    </figure>
+  </div>
+  <div class="col m3 l3">
+  </div>
+</div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+  <app-blood-mgmt></app-blood-mgmt>
+</div>
+<div id="modal2" class="modal modal-fixed-footer" style="height:30em;">
+  <div class="modal-header">
+    <h6 class="flow-text">Search Blood Donar</h6>
+  </div>
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Blood Group</label><br><br>
+            <select [(ngModel)]="bloodGroup" class="browser-default">
+                 <option value="" disabled selected>Choose your Blood Group</option>
+                   <option *ngFor="let b of bloodGroups" [ngValue]="b">{{b}}</option>
+            </select>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">location</i>
+            <input id="icon_telephone" type="text" class="validate" [(ngModel)]="location">
+            <label for="icon_telephone">Location (Not Mandatory)</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn waves-effect waves-light" type="submit" name="action" (click)="onBloodSearch()">Search
+    <i class="material-icons right">search</i>
+  </button>
+
+  </div>
+</div>
